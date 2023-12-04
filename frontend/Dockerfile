@@ -3,7 +3,10 @@ FROM node:21.2.0-alpine as builder
 
 WORKDIR /app
 COPY package.json .
-RUN apk add --no-cache git && npm install --prefer-offline
+RUN apk add --no-cache git && \
+    npm install --prefer-offline && \
+    npm install element-plus --save && \
+    npm install tailwindcss
 COPY . .
 RUN npm run build
 
